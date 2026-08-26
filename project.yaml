@@ -46,3 +46,4 @@ success_criteria:
 dashboard:
   task_file: tasks.csv
   durable_state: README.md
+  agent_instructions: AGENTS.md
