@@ -11,19 +11,21 @@ decision_prefix: DEC-SIDE-
 
 objective: >-
   Preserve and advance optional Celica engineering projects without allowing
-  exploratory work to redefine the Baseline or Street Build. Current focus is
-  recovery and verification of the DIY big-brake-kit architecture.
+  exploratory work to redefine the Baseline or Street Build. Only mature side
+  projects should create dashboard work.
 
 current_direction:
   - Use this repository as a compact index/recovery space for optional Celica R&D.
-  - Keep mature side projects in subfolders with resume-here documentation.
+  - Keep only BBK and EPS active in the task system unless another concept is deliberately revived.
   - Treat ownership of hardware as evidence of available parts, not architectural commitment.
-  - Keep BBK analysis and verification separate from the required Baseline and Street Build paths.
+  - For safety-critical brake and steering hardware, require drawing-controlled interfaces and verification before permanent fabrication.
 
 current_focus:
   - bbk-front-structural-verification
   - bbk-rear-architecture-selection
   - bbk-hydraulic-system-verification
+  - eps-mechanical-interface-definition
+  - eps-dfm-architecture
 
 interfaces:
   - celica-baseline
@@ -36,6 +38,10 @@ success_criteria:
     Recover exact hardware/CAD, verify front adapter structural design, select
     an acceptable rear architecture, and verify brake balance/master-cylinder
     sizing before releasing permanent hardware.
+  current_eps_phase: >-
+    Define a reproducible Celica-to-EPS mechanical interface, model the complete
+    column installation, and validate the architecture on spare hardware before
+    any irreversible vehicle modification.
 
 dashboard:
   task_file: tasks.csv
