@@ -1,14 +1,12 @@
 # Celica Side Projects
 
-Optional engineering projects and experiments for the 2000 Toyota Celica GT-S that are **not required** to complete either Celica Baseline or the committed Street Build.
+Optional engineering projects for the 2000 Toyota Celica GT-S that are **not required** to complete either Celica Baseline or the committed Street Build.
 
-This repository is intentionally an index/recovery space rather than a collection of separate repositories. A side project gets its own folder when enough real work exists to preserve a useful **resume-here** state.
+This repository is intentionally a compact recovery/execution space rather than a collection of separate repositories. At present, only two side projects are active enough to deserve dashboard work: **Big Brake Kit** and **EPS**.
 
-## Project Index
+## Active Project Index
 
-### Big Brake Kit — active recovery / verification
-
-The BBK is the most mature side project currently reconstructed.
+### Big Brake Kit — verification / design completion
 
 Last authoritative checkpoint:
 
@@ -19,23 +17,27 @@ Last authoritative checkpoint:
 - The Superlite/LS430 combination was selected in part because prior calculations indicated an appropriate front/rear brake balance; those calculations still need to be recovered or independently verified.
 - A larger-bore Highlander master cylinder was being investigated, but the exact application and bore remain to be verified.
 
-See [`bbk/PROJECT.md`](bbk/PROJECT.md) for the full restart state and [`bbk/SOURCES.md`](bbk/SOURCES.md) for the earlier documented design history.
+See [`bbk/PROJECT.md`](bbk/PROJECT.md) and [`bbk/SOURCES.md`](bbk/SOURCES.md).
 
-### EPS — not yet reconstructed
+### EPS — architecture recovery / mechanical interface design
 
-Real hardware and prior work exist, but the current architecture/progress has not yet been recovered into this repository.
+The EPS project is feasible in principle but stalled on creating a clean, repeatable steering-column interface.
 
-### Tubular subframe — not yet reconstructed
+Known state:
 
-Early engineering/learning project. Preserve later when there is enough state to create a useful restart document.
+- Multiple Nissan Versa EPS components are available for investigation.
+- An MR2 Spyder electro-hydraulic pump/reservoir assembly is also available as a lower-risk fallback architecture.
+- Spare Celica steering hardware exists, including at least one spare column.
+- The original blocker was adapting the donor EPS input/output shaft geometry to the Celica without spline tooling and without committing to uncontrolled one-off cut/weld fabrication.
+- A spare column should not be cut until the complete interface, mounting, and load path are defined in CAD.
 
-### AWD concept — not yet reconstructed
+The engineering target is a **drawing-controlled, inspectable, reproducible mechanical interface** using OEM splines, commercial couplers/U-joints, bolted/clamped interfaces, or properly machined adapters wherever practical.
 
-Long-term concept investigation, not a hidden requirement for the Street Build.
+See [`eps/PROJECT.md`](eps/PROJECT.md) and [`eps/SOURCES.md`](eps/SOURCES.md).
 
-### M-Gauge — saved external mini-project
+## Parked Concepts
 
-Interesting project saved for possible future use; no active Celica integration work is currently defined here.
+Other ideas such as AWD conversion, tubular subframe development, and small external projects are intentionally **not represented in `tasks.csv`**. They remain concepts until deliberately revived; they should not clutter the dashboard or compete with real work.
 
 ## Rules
 
@@ -43,7 +45,8 @@ Interesting project saved for possible future use; no active Celica integration 
 - Explored concepts remain explored until explicitly selected.
 - Side projects do not get to redefine Baseline or Street Build completion.
 - Prefer a concise restart document over empty project-management structure.
-- `tasks.csv` contains only work that is useful to resume, verify, or advance a side project.
+- `tasks.csv` contains only work that is useful to resume, verify, or advance BBK or EPS.
+- For safety-critical steering/brake hardware, prototype fit is not design release; structural/mechanical verification comes first.
 
 ## Dashboard
 
