@@ -1,0 +1,42 @@
+id: celica-side-projects
+name: Celica Side Projects
+repository: wildc4t-workshop/celica-side-projects
+repository_type: engineering-project
+status: active
+phase: prototype
+checkpoint: 2026-08-26
+
+task_prefix: SIDE-
+decision_prefix: DEC-SIDE-
+
+objective: >-
+  Preserve and advance optional Celica engineering projects without allowing
+  exploratory work to redefine the Baseline or Street Build. Current focus is
+  recovery and verification of the DIY big-brake-kit architecture.
+
+current_direction:
+  - Use this repository as a compact index/recovery space for optional Celica R&D.
+  - Keep mature side projects in subfolders with resume-here documentation.
+  - Treat ownership of hardware as evidence of available parts, not architectural commitment.
+  - Keep BBK analysis and verification separate from the required Baseline and Street Build paths.
+
+current_focus:
+  - bbk-front-structural-verification
+  - bbk-rear-architecture-selection
+  - bbk-hydraulic-system-verification
+
+interfaces:
+  - celica-baseline
+  - celica-street-build
+  - celica-engineering-knowledge
+  - celica-project-dashboard
+
+success_criteria:
+  current_bbk_phase: >-
+    Recover exact hardware/CAD, verify front adapter structural design, select
+    an acceptable rear architecture, and verify brake balance/master-cylinder
+    sizing before releasing permanent hardware.
+
+dashboard:
+  task_file: tasks.csv
+  durable_state: README.md
