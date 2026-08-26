@@ -26,9 +26,9 @@ The EPS project is feasible in principle but stalled on creating a clean, repeat
 Known state:
 
 - Multiple Nissan Versa EPS components are available for investigation.
-- An MR2 Spyder electro-hydraulic pump/reservoir assembly is also available as a lower-risk fallback architecture.
+- An MR2 Spyder electro-hydraulic pump/reservoir assembly is available as a lower-risk fallback architecture.
 - Spare Celica steering hardware exists, including at least one spare column.
-- The original blocker was adapting the donor EPS input/output shaft geometry to the Celica without spline tooling and without committing to uncontrolled one-off cut/weld fabrication.
+- The original blocker was adapting donor EPS input/output shaft geometry to the Celica without spline tooling and without committing to uncontrolled one-off cut/weld fabrication.
 - A spare column should not be cut until the complete interface, mounting, and load path are defined in CAD.
 
 The engineering target is a **drawing-controlled, inspectable, reproducible mechanical interface** using OEM splines, commercial couplers/U-joints, bolted/clamped interfaces, or properly machined adapters wherever practical.
@@ -38,6 +38,14 @@ See [`eps/PROJECT.md`](eps/PROJECT.md) and [`eps/SOURCES.md`](eps/SOURCES.md).
 ## Parked Concepts
 
 Other ideas such as AWD conversion, tubular subframe development, and small external projects are intentionally **not represented in `tasks.csv`**. They remain concepts until deliberately revived; they should not clutter the dashboard or compete with real work.
+
+## Source of Truth
+
+- [`tasks.csv`](tasks.csv) — canonical executable work queue and task status for BBK/EPS.
+- [`project.yaml`](project.yaml) — machine-readable project state.
+- [`AGENTS.md`](AGENTS.md) — collaboration, DFM, safety, and repository-maintenance rules.
+- [`bbk/PROJECT.md`](bbk/PROJECT.md) — authoritative BBK resume-here state.
+- [`eps/PROJECT.md`](eps/PROJECT.md) — authoritative EPS resume-here state.
 
 ## Rules
 
@@ -50,4 +58,4 @@ Other ideas such as AWD conversion, tubular subframe development, and small exte
 
 ## Dashboard
 
-This repository exposes [`project.yaml`](project.yaml) and [`tasks.csv`](tasks.csv) to the Celica Project Dashboard.
+This repository exposes `project.yaml` and `tasks.csv` to the Celica Project Dashboard.
