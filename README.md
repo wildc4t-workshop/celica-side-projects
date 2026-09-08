@@ -2,7 +2,7 @@
 
 Optional engineering projects for the 2000 Toyota Celica GT-S that are **not required** to complete either Celica Baseline or the committed Street Build.
 
-This repository is intentionally a compact recovery/execution space rather than a collection of separate repositories. At present, only two side projects are active enough to deserve dashboard work: **Big Brake Kit** and **EPS**. The P4 e-AWD concept is preserved here as a **parked engineering side project** so it can be resumed later without reconstructing the design from memory, but it intentionally has no active dashboard tasks.
+This repository is intentionally a compact recovery/execution space rather than a collection of separate repositories. At present, only two side projects are active enough to deserve execution work: **Big Brake Kit** and **EPS**. The P4 e-AWD concept is preserved here as a **parked engineering side project** so it can be resumed later without reconstructing the design from memory; it carries only one passive donor-watch task.
 
 ## Active Project Index
 
@@ -37,7 +37,7 @@ See [`eps/PROJECT.md`](eps/PROJECT.md) and [`eps/SOURCES.md`](eps/SOURCES.md).
 
 ## Parked Engineering Side Project
 
-### P4 e-AWD / Hybrid Rear Axle — concept preserved, no active work
+### P4 e-AWD / Hybrid Rear Axle — concept preserved, passive donor watch only
 
 A complete concept checkpoint is preserved for a future electric rear-axle conversion using a **Toyota/Lexus Q211 MGR**, a **Gen-3 Prius inverter**, and a compact **Ford C-Max Hybrid high-power battery**.
 
@@ -51,7 +51,7 @@ Current concept direction:
 - keep the Ford BECM/contactors if a minimal standalone CAN contract can be decoded;
 - develop the entire system off-car and integrate only after packaging, motor control, battery CAN and HV bench testing are proven.
 
-**Near-term rule:** the only justified speculative purchase is a cheap complete Q211 with its stubs, brackets, pigtails and useful CV/HV pieces. Scan/measure it and store it. Do not buy the battery, commission gears, or create dashboard work until Q211 packaging makes the concept worth advancing.
+**Near-term rule:** the only justified speculative purchase is a cheap complete Q211 with its stubs, brackets, pigtails and useful CV/HV pieces. Scan/measure it and store it. `SIDE-EAWD-001` exists only to preserve the donor-vehicle watch list; do not create additional execution work until Q211 packaging makes the concept worth advancing.
 
 See [`eawd/PROJECT.md`](eawd/PROJECT.md) and [`eawd/SOURCES.md`](eawd/SOURCES.md).
 
@@ -61,7 +61,7 @@ Other ideas such as tubular-subframe development and small external projects are
 
 ## Source of Truth
 
-- [`tasks.csv`](tasks.csv) — canonical executable work queue and task status for currently active BBK/EPS work.
+- [`tasks.csv`](tasks.csv) — canonical executable work queue and task status for BBK/EPS plus the single passive e-AWD donor-watch task.
 - [`project.yaml`](project.yaml) — machine-readable project state.
 - [`AGENTS.md`](AGENTS.md) — collaboration, DFM, safety, and repository-maintenance rules.
 - [`bbk/PROJECT.md`](bbk/PROJECT.md) — authoritative BBK resume-here state.
@@ -74,10 +74,10 @@ Other ideas such as tubular-subframe development and small external projects are
 - Explored concepts remain explored until explicitly selected.
 - Side projects do not get to redefine Baseline or Street Build completion.
 - Prefer a concise restart document over empty project-management structure.
-- `tasks.csv` contains only work that is genuinely active enough to deserve engineering attention.
-- Parked projects may have detailed Markdown documentation without dashboard tasks.
+- `tasks.csv` contains only work that is genuinely active enough to deserve engineering attention, plus explicitly authorized passive sourcing/watch items.
+- Parked projects may have detailed Markdown documentation without being promoted into execution work.
 - For safety-critical steering/brake/high-voltage hardware, prototype fit is not design release; structural, electrical, thermal, controls, and fault verification come first.
 
 ## Dashboard
 
-This repository exposes `project.yaml` and `tasks.csv` to the Celica Project Dashboard. Parked e-AWD documentation is intentionally not promoted into the dashboard work queue.
+This repository exposes `project.yaml` and `tasks.csv` to the Celica Project Dashboard. Parked e-AWD documentation remains parked; only its single passive donor-watch task is exposed.
