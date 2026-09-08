@@ -19,6 +19,8 @@ current_direction:
   - Use this repository as a compact index/recovery space for optional Celica R&D.
   - Keep only BBK and EPS active in the execution task system unless another concept is deliberately revived.
   - Preserve the P4 e-AWD / hybrid rear-axle concept as a documented parked project with one passive donor-watch task only.
+  - For the parked e-AWD concept, use Mitsubishi Y61 rear drive + matched OEM rear inverter + Ford C-Max Hybrid non-Energi battery as the current architecture baseline.
+  - Treat the Toyota Q610 as the lightweight watch-list alternative and the prior Q211/custom-regear architecture as superseded.
   - Treat ownership of hardware as evidence of available parts, not architectural commitment.
   - For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, require controlled interfaces and verification before permanent fabrication or vehicle integration.
 
@@ -32,16 +34,21 @@ current_focus:
 parked_projects:
   p4_eawd:
     status: parked
-    durable_state: eawd/PROJECT.md
-    sources: eawd/SOURCES.md
-    next_gate: q211-acquire-characterize-and-later-package-check
+    durable_state: eawd/CURRENT_ARCHITECTURE.md
+    trade_study: eawd/TRADE_STUDY_2026-09-08.md
+    current_sources: eawd/SOURCES_CURRENT.md
+    legacy_state: eawd/PROJECT.md
+    legacy_sources: eawd/SOURCES.md
+    next_gate: y61-package-mass-and-output-geometry-check
     dashboard_tasks: passive-donor-watch-only
     passive_task: SIDE-EAWD-001
     concept: >-
-      Independent Toyota/Lexus Q211 electric rear axle using a lightweight
-      Gen-3 Prius inverter and Ford C-Max Hybrid high-power battery, with a
-      tentative custom Q211 regear to control overspeed and reduce voltage
-      requirement at Celica road speeds.
+      Independent Mitsubishi Y61 electric rear axle using its matched OEM rear
+      inverter and a Ford C-Max Hybrid high-power battery. Retain the stock
+      7.065 reduction for launch/mid-speed performance and use a staged
+      one-side inboard halfshaft disconnect to protect the motor at high road
+      speed. Until that disconnect is verified, use an approximately 90 mph
+      vehicle-speed limit.
 
 interfaces:
   - celica-baseline
@@ -59,10 +66,11 @@ success_criteria:
     column installation, and validate the architecture on spare hardware before
     any irreversible vehicle modification.
   parked_eawd_phase: >-
-    Preserve enough rationale, donor specifications, shopping strategy,
-    development sequence, risk state, and open questions that the concept can be
-    resumed later without reconstructing the project from chat history. Keep only
-    SIDE-EAWD-001 as a passive donor-watch task until explicitly revived.
+    Preserve enough rationale, donor specifications, trade calculations,
+    sourcing strategy, controls architecture, speed/disconnect constraints,
+    development sequence, risk state, and open questions that the Y61 concept
+    can be resumed later without reconstructing the project from chat history.
+    Keep only SIDE-EAWD-001 as a passive donor-watch task until explicitly revived.
 
 dashboard:
   task_file: tasks.csv
