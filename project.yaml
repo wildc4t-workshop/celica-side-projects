@@ -4,7 +4,7 @@ repository: wildc4t-workshop/celica-side-projects
 repository_type: engineering-project
 status: active
 phase: prototype
-checkpoint: 2026-08-26
+checkpoint: 2026-09-08
 
 task_prefix: SIDE-
 decision_prefix: DEC-SIDE-
@@ -12,13 +12,15 @@ decision_prefix: DEC-SIDE-
 objective: >-
   Preserve and advance optional Celica engineering projects without allowing
   exploratory work to redefine the Baseline or Street Build. Only mature side
-  projects should create dashboard work.
+  projects should create dashboard work; parked projects may retain durable
+  engineering documentation without generating task debt.
 
 current_direction:
   - Use this repository as a compact index/recovery space for optional Celica R&D.
   - Keep only BBK and EPS active in the task system unless another concept is deliberately revived.
+  - Preserve the P4 e-AWD / hybrid rear-axle concept as a documented parked project with no active dashboard tasks.
   - Treat ownership of hardware as evidence of available parts, not architectural commitment.
-  - For safety-critical brake and steering hardware, require drawing-controlled interfaces and verification before permanent fabrication.
+  - For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, require controlled interfaces and verification before permanent fabrication or vehicle integration.
 
 current_focus:
   - bbk-front-structural-verification
@@ -26,6 +28,19 @@ current_focus:
   - bbk-hydraulic-system-verification
   - eps-mechanical-interface-definition
   - eps-dfm-architecture
+
+parked_projects:
+  p4_eawd:
+    status: parked
+    durable_state: eawd/PROJECT.md
+    sources: eawd/SOURCES.md
+    next_gate: q211-acquire-characterize-and-later-package-check
+    dashboard_tasks: false
+    concept: >-
+      Independent Toyota/Lexus Q211 electric rear axle using a lightweight
+      Gen-3 Prius inverter and Ford C-Max Hybrid high-power battery, with a
+      tentative custom Q211 regear to control overspeed and reduce voltage
+      requirement at Celica road speeds.
 
 interfaces:
   - celica-baseline
@@ -42,6 +57,11 @@ success_criteria:
     Define a reproducible Celica-to-EPS mechanical interface, model the complete
     column installation, and validate the architecture on spare hardware before
     any irreversible vehicle modification.
+  parked_eawd_phase: >-
+    Preserve enough rationale, donor specifications, shopping strategy,
+    development sequence, risk state, and open questions that the concept can be
+    resumed later without reconstructing the project from chat history. Do not
+    promote it into active work until explicitly revived.
 
 dashboard:
   task_file: tasks.csv
