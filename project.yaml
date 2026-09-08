@@ -12,13 +12,13 @@ decision_prefix: DEC-SIDE-
 objective: >-
   Preserve and advance optional Celica engineering projects without allowing
   exploratory work to redefine the Baseline or Street Build. Only mature side
-  projects should create dashboard work; parked projects may retain durable
-  engineering documentation without generating task debt.
+  projects should create execution work; parked projects may retain durable
+  engineering documentation and explicitly authorized passive sourcing tasks.
 
 current_direction:
   - Use this repository as a compact index/recovery space for optional Celica R&D.
-  - Keep only BBK and EPS active in the task system unless another concept is deliberately revived.
-  - Preserve the P4 e-AWD / hybrid rear-axle concept as a documented parked project with no active dashboard tasks.
+  - Keep only BBK and EPS active in the execution task system unless another concept is deliberately revived.
+  - Preserve the P4 e-AWD / hybrid rear-axle concept as a documented parked project with one passive donor-watch task only.
   - Treat ownership of hardware as evidence of available parts, not architectural commitment.
   - For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, require controlled interfaces and verification before permanent fabrication or vehicle integration.
 
@@ -35,7 +35,8 @@ parked_projects:
     durable_state: eawd/PROJECT.md
     sources: eawd/SOURCES.md
     next_gate: q211-acquire-characterize-and-later-package-check
-    dashboard_tasks: false
+    dashboard_tasks: passive-donor-watch-only
+    passive_task: SIDE-EAWD-001
     concept: >-
       Independent Toyota/Lexus Q211 electric rear axle using a lightweight
       Gen-3 Prius inverter and Ford C-Max Hybrid high-power battery, with a
@@ -60,8 +61,8 @@ success_criteria:
   parked_eawd_phase: >-
     Preserve enough rationale, donor specifications, shopping strategy,
     development sequence, risk state, and open questions that the concept can be
-    resumed later without reconstructing the project from chat history. Do not
-    promote it into active work until explicitly revived.
+    resumed later without reconstructing the project from chat history. Keep only
+    SIDE-EAWD-001 as a passive donor-watch task until explicitly revived.
 
 dashboard:
   task_file: tasks.csv
