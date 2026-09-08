@@ -9,6 +9,8 @@ At present, only two side projects are active enough to generate dashboard work:
 - DIY Big Brake Kit (BBK)
 - Electric Power Steering (EPS)
 
+The P4 e-AWD / hybrid rear-axle project is a **documented parked side project**. It has enough engineering content to deserve durable Markdown, but it intentionally does not generate dashboard work until explicitly revived.
+
 Other ideas remain parked concepts until deliberately revived. Do not create tasks for them merely because they have been discussed before.
 
 ## Core operating rule
@@ -16,6 +18,8 @@ Other ideas remain parked concepts until deliberately revived. Do not create tas
 **Markdown is durable engineering memory. `tasks.csv` is engineering attention. `project.yaml` is machine-readable state. The dashboard is derived only.**
 
 Do not leave safety-critical design rationale only in chat, CAD, FEA screenshots, marketplace notes, or task rows.
+
+A parked project may have substantial durable documentation without being promoted into `tasks.csv`.
 
 ## Read before changing state
 
@@ -26,6 +30,7 @@ Read at minimum:
 - `tasks.csv`
 - `bbk/PROJECT.md` and `bbk/SOURCES.md` for BBK work
 - `eps/PROJECT.md` and `eps/SOURCES.md` for EPS work
+- `eawd/PROJECT.md` and `eawd/SOURCES.md` for P4 e-AWD work
 
 Treat current repo state as authoritative unless the user explicitly corrects it.
 
@@ -35,6 +40,7 @@ The user may report natural-language updates from any chat, for example:
 
 - `BBK: I found the final adapter CAD.`
 - `EPS: the Versa unit is a 2014 part.`
+- `e-AWD: I pulled the Q211.`
 - `The rear rotor is actually from a different Nissan.`
 
 Do not require task IDs or filenames. Resolve the affected state, update durable documentation/tasks when appropriate, and report what changed.
@@ -47,11 +53,13 @@ Use consolidated side-project IDs:
 
 - `SIDE-BBK-###`
 - `SIDE-EPS-###`
+- `SIDE-EAWD-###` only after the e-AWD project is explicitly promoted out of parked state
 
 Use decision IDs:
 
 - `DEC-SIDE-BBK-###`
 - `DEC-SIDE-EPS-###`
+- `DEC-SIDE-EAWD-###` for durable e-AWD architecture decisions if/when formal decision records are needed
 
 Canonical task schema:
 
@@ -59,7 +67,7 @@ Canonical task schema:
 id,title,status,action,time_min,context,cost,priority,blocked_by,decision_needed,doc_link,requires_car_down,requires_parts,notes
 ```
 
-Do not create dashboard work for tubular-subframe, AWD, M-Gauge, or other parked ideas unless the user explicitly revives them.
+Do not create dashboard work for e-AWD, tubular-subframe, M-Gauge, or other parked ideas unless the user explicitly revives them.
 
 ## State / evidence discipline
 
@@ -69,7 +77,7 @@ Useful evidence labels include `MEASURED`, `FIT-CHECKED`, `BENCH-TESTED`, `MANUF
 
 **Ownership of hardware does not imply architectural commitment. Prototype fit does not equal design release.**
 
-For safety-critical brake and steering hardware, preserve exact geometry, material, fastener, load-case, manufacturing, and verification assumptions.
+For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, preserve exact geometry, material, fastener, load-case, manufacturing, controls, thermal, and verification assumptions as applicable.
 
 # Big Brake Kit
 
@@ -225,17 +233,104 @@ Verify at minimum:
 
 Steering is safety-critical. Prototype convenience does not override inspectability or robustness.
 
+# P4 e-AWD / Hybrid Rear Axle
+
+## Authoritative checkpoint
+
+This project is **parked**, but the architecture is deliberately preserved in `eawd/PROJECT.md` because enough engineering work has been done that losing the rationale would create substantial rework later.
+
+Current tentative architecture:
+
+- Toyota/Lexus Q211 MGR rear transaxle;
+- custom first-stage regear targeting roughly 4.07:1 overall ratio rather than the stock 6.859:1;
+- 2010–2015 Gen-3 Prius inverter/PCU with standalone controller;
+- Ford C-Max Hybrid, non-Energi, compact ~281 V high-power battery;
+- Ford BECM/contactors retained if standalone CAN control is practical;
+- custom/modified rear cradle using Matrix AWD geometry as a future hard-point reference;
+- single rear motor + open differential;
+- preserve the OEM fuel tank if practical;
+- off-car development first, vehicle integration last.
+
+## e-AWD governing rule
+
+> Do not let enthusiasm for cheap donor hardware outrun the packaging gate.
+
+The only justified speculative acquisition while the project is parked is a cheap, complete Q211 with its output stubs, brackets, pigtails, HV cable pieces and useful inner-CV hardware.
+
+After acquisition:
+
+- weigh it;
+- photograph it;
+- 3D scan it;
+- manually measure critical datums;
+- store it.
+
+Do **not** buy the battery, commission gears, create a cradle, or create dashboard work merely because the Q211 has been acquired.
+
+## e-AWD evidence discipline
+
+Treat as **TENTATIVE** until measured/proven:
+
+- Q211 10,000 rpm mechanical design limit;
+- exact custom helical gear geometry;
+- actual 281 V direct-bus torque/power envelope;
+- Matrix/Q211 CV spline interchange;
+- final battery dimensions/packaging;
+- C-Max BECM minimum standalone message set;
+- final cradle architecture and fuel-tank clearance;
+- final system mass and cost.
+
+Treat the ~31T/32T first-stage pair as a ratio/center-distance concept only. A gear designer must close module, helix, pressure angle, profile shift, face width, hub/spline geometry, bearing load, contact, material, heat treatment, lubrication and manufacturability before release.
+
+## e-AWD battery / CAN discipline
+
+The desired Ford strategy is to preserve the OEM BECM's cell monitoring, temperature monitoring, current sensing, power limits, cooling control, precharge and contactor supervision.
+
+Reverse-engineer only the message contract needed to operate it standalone. Prefer an intact, electrically healthy but mechanically failed C-Max Hybrid as a future CAN/reference donor if one can be bought cheaply.
+
+Do not bypass BECM limits just to obtain rear torque.
+
+## e-AWD high-voltage discipline
+
+Traction-battery and inverter work involves lethal voltage and stored energy. Preserve or intentionally replace OEM safety functions with equivalent engineered protection, including as applicable:
+
+- service disconnect;
+- precharge;
+- main contactors;
+- correctly rated fusing;
+- HV interlock strategy;
+- insulation/creepage/clearance;
+- guarded terminals and connectors;
+- de-energization verification;
+- fault shutdown;
+- battery/inverter/motor temperature limits;
+- physical protection of HV cable routes.
+
+Do not conduct high-power unloaded motor testing on an improvised fixture.
+
+## e-AWD promotion gate
+
+Do not add `SIDE-EAWD-*` tasks until the user explicitly revives the project. The first meaningful gate after Q211 acquisition is:
+
+> Can the Q211 be integrated into the Celica rear geometry, using the Matrix assembly as a suspension/hard-point reference, while preserving acceptable fuel-tank/floor/exhaust packaging and axle geometry?
+
+If no, keep the project parked or close it without escalating sunk cost.
+
+If yes, only then does inverter bench work deserve active project status.
+
 ## Cross-project boundaries
 
 - Baseline owns restoration of conventional hydraulic PS now.
 - EPS is optional R&D and does not block Baseline.
 - BBK and EPS do not redefine Street Build completion unless deliberately adopted later.
+- P4 e-AWD is parked and does not redefine Street Build completion, rear-suspension architecture, fuel-system architecture, or current harness work unless explicitly adopted later.
+- A future custom rear cradle may interact with suspension, exhaust, fuel-tank, battery and wiring work; record explicit interfaces rather than silently changing other repositories.
 
 Create explicit cross-project dependencies rather than duplicate tasks.
 
 ## Definition of done
 
-Before marking a BBK or EPS task done:
+Before marking an active BBK or EPS task done, or future e-AWD task if that project is promoted:
 
 1. preserve the useful result in the relevant `PROJECT.md` or supporting engineering record;
 2. record exact parts/geometry/analysis assumptions where relevant;
@@ -243,6 +338,8 @@ Before marking a BBK or EPS task done:
 4. create only genuinely actionable follow-ons;
 5. reconcile blocked/ready tasks;
 6. preserve CAD/FEA/test/source references needed to reproduce the work.
+
+For parked-project research, update the durable Markdown checkpoint without creating attention/task debt unless the user explicitly wants the project active.
 
 ## End-of-session reconciliation
 
