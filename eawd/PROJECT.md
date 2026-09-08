@@ -3,13 +3,13 @@
 ## Project State
 
 **Status:** parked / documented concept  
-**Dashboard status:** intentionally no active tasks  
+**Dashboard status:** one passive donor-watch task only (`SIDE-EAWD-001`); no execution work  
 **Target vehicle:** 2000 Toyota Celica GT-S, turbo 2ZZ + E153 manual FWD drivetrain  
 **Concept:** add an electrically driven rear axle without mechanically coupling the front and rear drivetrains  
 **Rough DIY budget:** target about **$5,000**, with a planning range of roughly **$3,500–$7,000** depending mainly on custom gears, axles, and fabrication  
 **Primary next action when/if revived:** acquire and characterize a cheap Toyota/Lexus Q211 rear motor-generator assembly; do not buy the rest of the system until packaging looks credible
 
-This project is intentionally preserved now so it can be resumed years later without reconstructing the architecture from chat history. It is **not** part of Baseline or the committed Street Build and should not compete with current work.
+This project is intentionally preserved now so it can be resumed years later without reconstructing the architecture from chat history. It is **not** part of Baseline or the committed Street Build and should not compete with current work. `SIDE-EAWD-001` exists only as a low-priority sourcing/watchlist reminder; do not create additional e-AWD tasks until the project is explicitly revived.
 
 ## Purpose
 
