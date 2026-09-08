@@ -4,12 +4,12 @@
 
 This repository is the engineering system of record for optional Celica engineering projects that are real enough to preserve and advance, but are **not required** for Celica Baseline or the committed Street Build.
 
-At present, only two side projects are active enough to generate dashboard work:
+At present, only two side projects are active enough to generate execution work:
 
 - DIY Big Brake Kit (BBK)
 - Electric Power Steering (EPS)
 
-The P4 e-AWD / hybrid rear-axle project is a **documented parked side project**. It has enough engineering content to deserve durable Markdown, but it intentionally does not generate dashboard work until explicitly revived.
+The P4 e-AWD / hybrid rear-axle project is a **documented parked side project**. It has enough engineering content to deserve durable Markdown and one explicitly authorized passive donor-watch task (`SIDE-EAWD-001`), but it should not generate additional execution work until explicitly revived.
 
 Other ideas remain parked concepts until deliberately revived. Do not create tasks for them merely because they have been discussed before.
 
@@ -19,7 +19,7 @@ Other ideas remain parked concepts until deliberately revived. Do not create tas
 
 Do not leave safety-critical design rationale only in chat, CAD, FEA screenshots, marketplace notes, or task rows.
 
-A parked project may have substantial durable documentation without being promoted into `tasks.csv`.
+A parked project may have substantial durable documentation and an explicitly authorized passive sourcing/watch task without being promoted into active execution work.
 
 ## Read before changing state
 
@@ -53,7 +53,8 @@ Use consolidated side-project IDs:
 
 - `SIDE-BBK-###`
 - `SIDE-EPS-###`
-- `SIDE-EAWD-###` only after the e-AWD project is explicitly promoted out of parked state
+- `SIDE-EAWD-001` is reserved for the parked project's passive donor-watch task
+- additional `SIDE-EAWD-###` tasks only after the e-AWD project is explicitly promoted out of parked state
 
 Use decision IDs:
 
@@ -67,7 +68,7 @@ Canonical task schema:
 id,title,status,action,time_min,context,cost,priority,blocked_by,decision_needed,doc_link,requires_car_down,requires_parts,notes
 ```
 
-Do not create dashboard work for e-AWD, tubular-subframe, M-Gauge, or other parked ideas unless the user explicitly revives them.
+Do not create additional dashboard work for e-AWD, tubular-subframe, M-Gauge, or other parked ideas unless the user explicitly revives them. `SIDE-EAWD-001` is the sole exception and is passive sourcing only.
 
 ## State / evidence discipline
 
@@ -237,7 +238,7 @@ Steering is safety-critical. Prototype convenience does not override inspectabil
 
 ## Authoritative checkpoint
 
-This project is **parked**, but the architecture is deliberately preserved in `eawd/PROJECT.md` because enough engineering work has been done that losing the rationale would create substantial rework later.
+This project is **parked**, but the architecture is deliberately preserved in `eawd/PROJECT.md` because enough engineering work has been done that losing the rationale would create substantial rework later. `SIDE-EAWD-001` is allowed only as a passive reminder of donor vehicles worth watching for in junkyards, partouts, and Marketplace listings.
 
 Current tentative architecture:
 
@@ -265,7 +266,7 @@ After acquisition:
 - manually measure critical datums;
 - store it.
 
-Do **not** buy the battery, commission gears, create a cradle, or create dashboard work merely because the Q211 has been acquired.
+Do **not** buy the battery, commission gears, create a cradle, or create additional execution work merely because the Q211 has been acquired.
 
 ## e-AWD evidence discipline
 
@@ -310,7 +311,7 @@ Do not conduct high-power unloaded motor testing on an improvised fixture.
 
 ## e-AWD promotion gate
 
-Do not add `SIDE-EAWD-*` tasks until the user explicitly revives the project. The first meaningful gate after Q211 acquisition is:
+Do not add additional `SIDE-EAWD-*` tasks beyond `SIDE-EAWD-001` until the user explicitly revives the project. The first meaningful gate after Q211 acquisition is:
 
 > Can the Q211 be integrated into the Celica rear geometry, using the Matrix assembly as a suspension/hard-point reference, while preserving acceptable fuel-tank/floor/exhaust packaging and axle geometry?
 
@@ -339,7 +340,7 @@ Before marking an active BBK or EPS task done, or future e-AWD task if that proj
 5. reconcile blocked/ready tasks;
 6. preserve CAD/FEA/test/source references needed to reproduce the work.
 
-For parked-project research, update the durable Markdown checkpoint without creating attention/task debt unless the user explicitly wants the project active.
+For parked-project research, update the durable Markdown checkpoint without creating attention/task debt unless the user explicitly wants the project active. `SIDE-EAWD-001` may remain open indefinitely as a passive sourcing reminder.
 
 ## End-of-session reconciliation
 
