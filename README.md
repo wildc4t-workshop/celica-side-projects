@@ -37,23 +37,46 @@ See [`eps/PROJECT.md`](eps/PROJECT.md) and [`eps/SOURCES.md`](eps/SOURCES.md).
 
 ## Parked Engineering Side Project
 
-### P4 e-AWD / Hybrid Rear Axle — concept preserved, passive donor watch only
+### P4 e-AWD / Hybrid Rear Axle — Y61 architecture selected, passive donor watch only
 
-A complete concept checkpoint is preserved for a future electric rear-axle conversion using a **Toyota/Lexus Q211 MGR**, a **Gen-3 Prius inverter**, and a compact **Ford C-Max Hybrid high-power battery**.
+The current checkpoint uses a **Mitsubishi Y61 rear motor/reduction/differential**, its **matched OEM Mitsubishi rear inverter**, and a compact **Ford C-Max Hybrid non-Energi high-power battery**.
 
-Current concept direction:
+Current direction:
 
-- retain the turbo 2ZZ + E153 FWD drivetrain;
-- add an independent electric rear axle for launch traction, torque fill, shift fill, regen and optional through-the-road charging;
+- retain the turbo 2ZZ + E153 FWD drivetrain as the primary propulsion system;
+- add an independent electric rear axle for launch traction, torque fill, shift fill, corner-exit front-tire relief, low-mu traction, regen and optional through-the-road charging;
 - preserve the OEM fuel tank if packaging allows;
 - use the existing Matrix AWD rear assembly later as a suspension/hard-point geometry donor rather than assuming direct subframe interchange;
-- investigate a custom Q211 first-stage regear from 6.859:1 overall to approximately 4.07:1 to control motor overspeed and reduce back-EMF at Celica road speeds;
-- keep the Ford BECM/contactors if a minimal standalone CAN contract can be decoded;
-- develop the entire system off-car and integrate only after packaging, motor control, battery CAN and HV bench testing are proven.
+- retain the Y61's stock 7.065:1 gearing because the launch multiplication is valuable;
+- treat the Y61 as roughly a ~70 kW / 195 Nm / ~950-lbf-at-the-tire rear system on the assumed 235/35R18 tire;
+- use the Mitsubishi OEM rear inverter because documented standalone CAN torque control exists, avoiding a separate custom PMSM-control development program;
+- retain the Ford BECM/contactors/cooling if a minimal standalone CAN contract can be decoded;
+- develop a staged one-side inboard halfshaft disconnect so aggressive stock gearing does not mechanically overspeed the rear motor at high road speed;
+- software-limit the car to approximately **90 mph until the disconnect is validated**;
+- develop the entire system off-car and integrate only after packaging, inverter CAN, battery CAN, HV safety and disconnect behavior are proven.
 
-**Near-term rule:** the only justified speculative purchase is a cheap complete Q211 with its stubs, brackets, pigtails and useful CV/HV pieces. Scan/measure it and store it. `SIDE-EAWD-001` exists only to preserve the donor-vehicle watch list; do not create additional execution work until Q211 packaging makes the concept worth advancing.
+Intentional trade:
 
-See [`eawd/PROJECT.md`](eawd/PROJECT.md) and [`eawd/SOURCES.md`](eawd/SOURCES.md).
+- the Y61 is materially heavier than the Toyota Q610 (~133 lb community eAxle benchmark versus ~91 lb), but it buys more usable 25–60 mph rear power and substantially lower motor-control R&D burden;
+- Q610 remains the first lightweight alternative to revisit if turnkey inexpensive standalone torque/regen control matures or Y61 packaging/mass fails;
+- the earlier Q211 + Gen-3 Prius-inverter + custom ~4.07 regear direction is superseded because the regear solved overspeed by sacrificing too much low-speed rear thrust while adding custom gear-design/manufacturing burden.
+
+Current planning gates:
+
+- finished DIY cost preferably around **$6k**, with roughly **$5k–$7k** as a planning band;
+- net mass addition preferably **<= ~275 lb**, investigate up to roughly **300 lb** before rejecting Y61;
+- OEM fuel tank retained if practical;
+- no unrestricted high-speed/track operation before disconnect validation.
+
+**Near-term rule:** `SIDE-EAWD-001` remains a passive sourcing watch only. Prefer complete same-donor Y61 + rear-inverter packages with HV cables, pigtails, brackets and useful CV hardware. A mechanically failed but electrically healthy C-Max Hybrid remains the preferred battery/CAN reference donor. Do not create additional e-AWD execution work until the project is explicitly revived.
+
+See:
+
+- [`eawd/PROJECT.md`](eawd/PROJECT.md) — authoritative resume-here checkpoint;
+- [`eawd/CURRENT_ARCHITECTURE.md`](eawd/CURRENT_ARCHITECTURE.md) — concise current architecture;
+- [`eawd/TRADE_STUDY_2026-09-08.md`](eawd/TRADE_STUDY_2026-09-08.md) — calculations, Q610/Q211 tradeoffs, disconnect rationale and vehicle-dynamics benefits;
+- [`eawd/SOURCES_CURRENT.md`](eawd/SOURCES_CURRENT.md) — current Y61/inverter/C-Max evidence;
+- [`eawd/SOURCES.md`](eawd/SOURCES.md) — retained legacy Q211/Prius research.
 
 ## Other Parked Concepts
 
@@ -66,7 +89,7 @@ Other ideas such as tubular-subframe development and small external projects are
 - [`AGENTS.md`](AGENTS.md) — collaboration, DFM, safety, and repository-maintenance rules.
 - [`bbk/PROJECT.md`](bbk/PROJECT.md) — authoritative BBK resume-here state.
 - [`eps/PROJECT.md`](eps/PROJECT.md) — authoritative EPS resume-here state.
-- [`eawd/PROJECT.md`](eawd/PROJECT.md) — durable parked P4 e-AWD concept and restart checkpoint.
+- [`eawd/PROJECT.md`](eawd/PROJECT.md) — durable parked P4 e-AWD current checkpoint.
 
 ## Rules
 
