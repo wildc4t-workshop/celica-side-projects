@@ -34,10 +34,10 @@ current_focus:
 parked_projects:
   p4_eawd:
     status: parked
-    durable_state: eawd/CURRENT_ARCHITECTURE.md
+    durable_state: eawd/PROJECT.md
+    current_architecture: eawd/CURRENT_ARCHITECTURE.md
     trade_study: eawd/TRADE_STUDY_2026-09-08.md
     current_sources: eawd/SOURCES_CURRENT.md
-    legacy_state: eawd/PROJECT.md
     legacy_sources: eawd/SOURCES.md
     next_gate: y61-package-mass-and-output-geometry-check
     dashboard_tasks: passive-donor-watch-only
