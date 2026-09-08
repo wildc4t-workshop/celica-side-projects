@@ -4,22 +4,20 @@
 
 This repository is the engineering system of record for optional Celica engineering projects that are real enough to preserve and advance, but are **not required** for Celica Baseline or the committed Street Build.
 
-At present, only two side projects are active enough to generate execution work:
+At present, only two side projects are active enough to generate normal execution work:
 
 - DIY Big Brake Kit (BBK)
 - Electric Power Steering (EPS)
 
 The P4 e-AWD / hybrid rear-axle project is a **documented parked side project**. It has enough engineering content to deserve durable Markdown and one explicitly authorized passive donor-watch task (`SIDE-EAWD-001`), but it should not generate additional execution work until explicitly revived.
 
-Other ideas remain parked concepts until deliberately revived. Do not create tasks for them merely because they have been discussed before.
-
 ## Core operating rule
 
 **Markdown is durable engineering memory. `tasks.csv` is engineering attention. `project.yaml` is machine-readable state. The dashboard is derived only.**
 
-Do not leave safety-critical design rationale only in chat, CAD, FEA screenshots, marketplace notes, or task rows.
+Do not leave safety-critical design rationale only in chat, CAD, screenshots, marketplace notes, or task rows.
 
-A parked project may have substantial durable documentation and an explicitly authorized passive sourcing/watch task without being promoted into active execution work.
+A parked project may have substantial durable documentation and a passive sourcing task without being promoted into active execution work.
 
 ## Read before changing state
 
@@ -30,20 +28,15 @@ Read at minimum:
 - `tasks.csv`
 - `bbk/PROJECT.md` and `bbk/SOURCES.md` for BBK work
 - `eps/PROJECT.md` and `eps/SOURCES.md` for EPS work
-- `eawd/PROJECT.md` and `eawd/SOURCES.md` for P4 e-AWD work
+- `eawd/PROJECT.md`, `eawd/CURRENT_ARCHITECTURE.md`, `eawd/TRADE_STUDY_2026-09-08.md`, and `eawd/SOURCES_CURRENT.md` for P4 e-AWD work
 
 Treat current repo state as authoritative unless the user explicitly corrects it.
 
+`eawd/SOURCES.md` is retained legacy Q211/Prius research and does **not** define the current rear-drive architecture.
+
 ## Collaboration rule
 
-The user may report natural-language updates from any chat, for example:
-
-- `BBK: I found the final adapter CAD.`
-- `EPS: the Versa unit is a 2014 part.`
-- `e-AWD: I pulled the Q211.`
-- `The rear rotor is actually from a different Nissan.`
-
-Do not require task IDs or filenames. Resolve the affected state, update durable documentation/tasks when appropriate, and report what changed.
+The user may report natural-language updates from any chat. Do not require task IDs or filenames. Resolve the affected state, update durable documentation/tasks when appropriate, and report what changed.
 
 If the user says not to update GitHub yet, discuss only.
 
@@ -60,15 +53,13 @@ Use decision IDs:
 
 - `DEC-SIDE-BBK-###`
 - `DEC-SIDE-EPS-###`
-- `DEC-SIDE-EAWD-###` for durable e-AWD architecture decisions if/when formal decision records are needed
+- `DEC-SIDE-EAWD-###`
 
 Canonical task schema:
 
 ```text
 id,title,status,action,time_min,context,cost,priority,blocked_by,decision_needed,doc_link,requires_car_down,requires_parts,notes
 ```
-
-Do not create additional dashboard work for e-AWD, tubular-subframe, M-Gauge, or other parked ideas unless the user explicitly revives them. `SIDE-EAWD-001` is the sole exception and is passive sourcing only.
 
 ## State / evidence discipline
 
@@ -78,7 +69,7 @@ Useful evidence labels include `MEASURED`, `FIT-CHECKED`, `BENCH-TESTED`, `MANUF
 
 **Ownership of hardware does not imply architectural commitment. Prototype fit does not equal design release.**
 
-For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, preserve exact geometry, material, fastener, load-case, manufacturing, controls, thermal, and verification assumptions as applicable.
+For safety-critical brake, steering, high-voltage, drivetrain, and suspension hardware, preserve exact geometry, material, fastener, load-case, controls, thermal, and verification assumptions as applicable.
 
 # Big Brake Kit
 
@@ -86,66 +77,33 @@ For safety-critical brake, steering, high-voltage, drivetrain, and suspension ha
 
 Front selected architecture:
 
-- Wilwood Superlite caliper
-- Corvette front rotor redrilled to 5x100
-- custom Celica-to-Superlite adapter
-- a 3D-printed adapter was produced and physically fit-checked successfully
-- permanent metal adapter release was intentionally held pending defensible structural analysis
+- Wilwood Superlite caliper;
+- Corvette front rotor redrilled to 5x100;
+- custom Celica-to-Superlite adapter;
+- 3D-printed adapter physically fit-checked successfully;
+- permanent metal adapter release held pending defensible structural analysis.
 
 Rear:
 
-- LS430 rear caliper + redrilled Nissan rotor is a **technically viable** known candidate
-- CAD existed and the geometry worked conceptually
-- the solution was not accepted as final because it required more custom/irreversible hub and adapter work than desired
-- treat it as the known-valid baseline candidate, not a failed concept and not a frozen final design
+- LS430 rear caliper + redrilled Nissan rotor is a technically viable known candidate;
+- it was not accepted as final because it required more custom/irreversible hub and adapter work than desired;
+- treat it as the known-valid baseline candidate, not a failed concept and not a frozen final design.
 
 System-level:
 
-- prior calculations suggested the Superlite-front / LS430-rear combination maintained an appropriate front/rear brake balance
-- those calculations must be recovered or independently recomputed
-- a larger-bore Highlander master-cylinder candidate was being investigated, but exact application/bore and pedal effects remain to be verified
+- prior calculations suggested the Superlite-front / LS430-rear combination maintained appropriate front/rear brake balance;
+- those calculations must be recovered or independently recomputed;
+- a larger-bore Highlander master-cylinder candidate was being investigated, but exact application/bore and pedal effects remain to be verified.
 
-## BBK analysis discipline
+## BBK verification rules
 
-For the front adapter, derive local load from the actual brake system rather than inventing an arbitrary vehicle-g bracket force.
+Derive bracket loads from the actual brake system. Use bounded values for line pressure, piston area, pad friction, effective rotor radius, mount geometry, material/thickness, bolt grades and thread engagement.
 
-Use exact or bounded values for:
+Verify more than peak von Mises stress. Evaluate bearing, net section/tear-out, edge distance, bracket deflection, bolt interaction, thread engagement, contact/slip and fatigue sensitivity as applicable.
 
-- line pressure
-- caliper piston area
-- pad friction coefficient
-- effective rotor radius
-- caliper mount geometry
-- adapter material/thickness
-- bolt sizes/grades and thread engagement
-- knuckle/caliper interfaces
+Separate brake-torque distribution from pedal feel/master-cylinder sizing. Do not release the permanent front adapter until structural and hydraulic/system-level implications are documented.
 
-Verify more than peak von Mises stress. Evaluate as applicable:
-
-- bearing stress
-- net section / tear-out
-- edge distance
-- bracket deflection
-- bolt shear/tension interaction
-- thread engagement
-- contact/slip assumptions
-- stress concentration and fatigue sensitivity
-
-Document model idealization, boundary conditions, load derivation, mesh/convergence choices, material properties, and acceptance criteria. A colorful FEA plot is not verification by itself.
-
-## BBK hydraulic discipline
-
-Separate brake-torque distribution from pedal feel/master-cylinder sizing.
-
-Front/rear brake torque depends on caliper piston area, pad friction assumptions, effective rotor radii, and hydraulic pressure distribution. Master-cylinder bore mainly changes hydraulic leverage, pedal force, and pedal travel across the system; it does not by itself correct front/rear balance.
-
-Before permanent release, recover/recompute both.
-
-## BBK manufacturing/release rule
-
-Do not release the permanent front adapter until structural verification and system-level hydraulic implications are documented.
-
-Do not restart the rear design from a blank sheet. First compare any cleaner alternative against the known-valid LS430/Nissan architecture and require a meaningful improvement in serviceability, manufacturability, or irreversible modification.
+Do not restart the rear design from a blank sheet. Compare alternatives against the known-valid LS430/Nissan architecture and require a meaningful serviceability/manufacturability improvement.
 
 # Electric Power Steering
 
@@ -153,7 +111,7 @@ Do not restart the rear design from a blank sheet. First compare any cleaner alt
 
 Available hardware includes multiple Nissan Versa column-EPS components, an MR2 Spyder electro-hydraulic pump/reservoir assembly, spare Celica steering hardware, and at least one spare Celica column.
 
-The EPS project did **not** stall because electric assist was considered infeasible. It stalled because there was no clean, drawing-controlled mechanical integration plan between donor EPS shaft/spline geometry and the Celica steering column/intermediate shaft.
+The EPS project stalled because there was no clean, drawing-controlled mechanical integration plan between donor EPS shaft/spline geometry and the Celica steering column/intermediate shaft.
 
 The user does not want a one-off `cut here / weld there` solution merely because it can be made to turn.
 
@@ -161,135 +119,114 @@ The user does not want a one-off `cut here / weld there` solution merely because
 
 > Do not cut a spare Celica column until the complete mechanical load path, shaft-interface strategy, mounting scheme, and packaging are defined.
 
-The preferred result should look like a designed, inspectable, reproducible assembly.
+Prefer OEM spline interfaces, commercial couplers/U-joints, useful OEM shaft segments, bolted/clamped/keyed interfaces, machined reproducible adapters, reversible prototype work and complete CAD before destructive modification.
 
-## EPS DFM priorities
-
-Prefer where practical:
-
-- retaining OEM spline interfaces
-- commercially available spline couplers or steering U-joints
-- useful OEM donor/intermediate-shaft segments
-- bolted/clamped/keyed interfaces
-- machined adapters that can be dimensioned, toleranced, inspected, and reproduced
-- reversible prototype work on spare components
-- full CAD assembly before destructive modification
-
-Avoid as the default architecture:
-
-- arbitrary shaft cuts
-- hand-ground D-shafts
-- undocumented sleeve/weld splices
-- geometry dependent on one fabricator's fit-up
-- modification of the installed/original column before the spare architecture is proven
+Avoid arbitrary shaft cuts, hand-ground D-shafts, undocumented sleeve/weld splices and geometry dependent on one fabricator's fit-up.
 
 A controlled welded component is not categorically forbidden if later engineering shows it is the best solution, but `cut and weld until it fits` is not an acceptable starting design.
 
-## EPS architecture candidates
-
 ### Column-mounted EPS
 
-Nissan Versa hardware is the active R&D candidate. Solve:
-
-- Celica and donor spline/interface identification
-- axial packaging
-- motor clearance
-- steering-wheel position
-- shaft/U-joint geometry
-- EPS housing reaction-torque mount
-- dash/column structure interface
-- telescoping/collapse behavior
-- torque capacity and fatigue
-- electrical standalone/control behavior after mechanical architecture closes
+Nissan Versa hardware is the active R&D candidate. Solve spline/interface identification, axial packaging, motor clearance, steering-wheel position, shaft/U-joint geometry, housing reaction-torque mounting, collapse/telescoping behavior and torque/fatigue capacity before vehicle installation.
 
 ### MR2 Spyder electro-hydraulic fallback
 
-Retain the Celica hydraulic rack and replace the engine-driven pump with the electric MR2 pump/reservoir assembly.
-
-Treat this as the lower-risk fallback/reference architecture. It avoids column spline adaptation but retains hydraulic lines/fluid and requires pump packaging, electrical power, line adaptation, and control work.
+Retain the Celica hydraulic rack and replace the engine-driven pump with the electric MR2 pump/reservoir assembly. This avoids column spline adaptation but retains hydraulic lines/fluid and requires pump packaging, line adaptation and control.
 
 ## EPS decision gate
 
-The meaningful decision is:
-
 > Can column EPS be integrated with controlled, reproducible mechanical interfaces that meet the project's DFM and safety standard without unacceptable Celica-column modification?
 
-If yes, continue column EPS.
-
-If no, the MR2 electro-hydraulic architecture is a valid fallback rather than forcing an ugly column solution.
-
-## EPS verification before vehicle installation
-
-Verify at minimum:
-
-- shaft/coupler torque capacity and margin
-- clamp/fastener anti-slip capacity
-- alignment/runout and U-joint angles
-- housing reaction mount loads/stiffness
-- full lock-to-lock rotation without binding
-- affected telescoping/collapse behavior
-- manual steering with assist disabled
-- electrical protection/fault behavior
-- assist behavior across operating conditions before normal road use
-
-Steering is safety-critical. Prototype convenience does not override inspectability or robustness.
+If yes, continue column EPS. If no, the MR2 electro-hydraulic architecture is a valid fallback.
 
 # P4 e-AWD / Hybrid Rear Axle
 
 ## Authoritative checkpoint
 
-This project is **parked**, but the architecture is deliberately preserved in `eawd/PROJECT.md` because enough engineering work has been done that losing the rationale would create substantial rework later. `SIDE-EAWD-001` is allowed only as a passive reminder of donor vehicles worth watching for in junkyards, partouts, and Marketplace listings.
+This project is **parked**, but its current architecture is deliberately preserved because enough engineering work has been done that losing the rationale would create substantial rework later.
 
-Current tentative architecture:
+Current selected/tentative baseline:
 
-- Toyota/Lexus Q211 MGR rear transaxle;
-- custom first-stage regear targeting roughly 4.07:1 overall ratio rather than the stock 6.859:1;
-- 2010–2015 Gen-3 Prius inverter/PCU with standalone controller;
-- Ford C-Max Hybrid, non-Energi, compact ~281 V high-power battery;
-- Ford BECM/contactors retained if standalone CAN control is practical;
-- custom/modified rear cradle using Matrix AWD geometry as a future hard-point reference;
-- single rear motor + open differential;
-- preserve the OEM fuel tank if practical;
-- off-car development first, vehicle integration last.
+- Mitsubishi **Y61** rear motor/reduction/open differential from a later Outlander PHEV;
+- matched **OEM Mitsubishi rear traction inverter** using documented standalone CAN torque-control precedent;
+- Ford **C-Max Hybrid non-Energi** compact ~281 V / 1.4-kWh high-power battery reference;
+- preserve Ford BECM/contactors/cooling if standalone CAN control is practical;
+- dedicated Celica VCU translating EMU/chassis/BMS state into requested rear motor torque;
+- custom/modified rear cradle using Matrix AWD geometry as a hard-point reference;
+- preserve OEM fuel tank if practical;
+- retain Y61 stock **7.065:1** gearing for launch/mid-speed performance;
+- future one-side inboard halfshaft disconnect using the open differential;
+- approximately **90 mph temporary vehicle-speed limit until disconnect validation**;
+- development off-car first, vehicle integration last.
+
+Current planning gates:
+
+- complete installed mass preferably <= ~275 lb; investigate to ~300 lb before rejecting Y61;
+- finished DIY cost preferably around ~$6k, with ~$5k–$7k planning band;
+- do not enlarge the battery merely to justify the Y61's 70 kW motor rating.
 
 ## e-AWD governing rule
 
-> Do not let enthusiasm for cheap donor hardware outrun the packaging gate.
+> Use the lightest practical system that consumes otherwise-unused tire traction, but do not volunteer to reproduce mature OEM motor-control work when a matched inverter is already commandable.
 
-The only justified speculative acquisition while the project is parked is a cheap, complete Q211 with its output stubs, brackets, pigtails, HV cable pieces and useful inner-CV hardware.
+The current Y61 decision intentionally accepts roughly ~40 lb more eAxle mass than Q610 because it buys:
 
-After acquisition:
+- approximately ~950 lbf rear launch thrust on the assumed 235/35R18 tire;
+- ~70 kW motor capability and stronger 25–60 mph force persistence;
+- OEM resolver/current/field-weakening/motor-protection control;
+- existing OEM-inverter CAN torque/regen precedent;
+- less diversion into custom PMSM control.
 
-- weigh it;
-- photograph it;
-- 3D scan it;
-- manually measure critical datums;
-- store it.
+## Alternative status
 
-Do **not** buy the battery, commission gears, create a cradle, or create additional execution work merely because the Q211 has been acquired.
+### Q610 — HOLD / watch list
 
-## e-AWD evidence discipline
+Q610 remains the first lightweight alternative if:
 
-Treat as **TENTATIVE** until measured/proven:
+- inexpensive documented standalone torque/regen control becomes turnkey; or
+- Y61 packaging/mass fails.
 
-- Q211 10,000 rpm mechanical design limit;
-- exact custom helical gear geometry;
-- actual 281 V direct-bus torque/power envelope;
-- Matrix/Q211 CV spline interchange;
-- final battery dimensions/packaging;
-- C-Max BECM minimum standalone message set;
-- final cradle architecture and fuel-tank clearance;
-- final system mass and cost.
+Do not start a Gen-3 Prius/OpenInverter Q610 development program merely because the ~91-lb axle is attractive unless the user explicitly chooses that R&D burden.
 
-Treat the ~31T/32T first-stage pair as a ratio/center-distance concept only. A gear designer must close module, helix, pressure angle, profile shift, face width, hub/spline geometry, bearing load, contact, material, heat treatment, lubrication and manufacturability before release.
+### Q211 — SUPERSEDED final-drive direction
+
+The prior Q211 + Gen-3 Prius inverter + custom ~4.07 regear architecture is superseded. The custom regear controlled overspeed but reduced calculated rear thrust too far for the now-defined traction mission while creating custom-helical-gear manufacturing/validation work.
+
+Legacy Q211/OpenInverter sources remain in `eawd/SOURCES.md` for future reference.
 
 ## e-AWD battery / CAN discipline
 
-The desired Ford strategy is to preserve the OEM BECM's cell monitoring, temperature monitoring, current sensing, power limits, cooling control, precharge and contactor supervision.
+The desired Ford strategy is to preserve OEM BECM functions for cell voltage, temperature, current, power limits, cooling, precharge/contactors and faults.
 
-Reverse-engineer only the message contract needed to operate it standalone. Prefer an intact, electrically healthy but mechanically failed C-Max Hybrid as a future CAN/reference donor if one can be bought cheaply.
+DOE-tested C-Max packs show meaningful unit-to-unit/test variation; do not design to the best published pulse-power number. The actual donor BECM's real-time power limits are authoritative.
 
-Do not bypass BECM limits just to obtain rear torque.
+Reverse-engineer only the message contract needed to operate the BECM standalone. Prefer an intact, electrically healthy but mechanically failed C-Max Hybrid as a future CAN/reference donor if one can be bought cheaply.
+
+Do not bypass BECM limits to obtain rear torque.
+
+## e-AWD speed / disconnect discipline
+
+Stock Y61 gearing is deliberately retained. Until the actual donor speed limit and a mechanical disconnect are validated, keep the car software-limited to approximately 90 mph.
+
+Preferred disconnect concept:
+
+- one-side inboard shaft;
+- bearing-supported dog clutch;
+- manual/stationary first;
+- positive engaged/disengaged sensing;
+- electrical actuation later;
+- motor-synchronized reconnection only after low-speed validation;
+- rear torque = zero whenever disconnect state is unresolved.
+
+Before relying on the open-differential disconnect, calculate and validate internal side-gear/pinion relative speed, lubrication and durability. Protecting the motor from overspeed does not automatically prove the differential is safe.
+
+## e-AWD vehicle-dynamics discipline
+
+The first vehicle POC is straight-line and conservative. Later add launch, shift-fill, regen, corner-exit front-tire relief, low-mu traction allocation and yaw-aware torque reduction one function at a time.
+
+The Y61/open-diff architecture is **front/rear torque allocation**, not true left/right torque vectoring.
+
+The VCU remains the sole torque authority. Driver inputs such as a regen button are requests, never direct inverter commands.
 
 ## e-AWD high-voltage discipline
 
@@ -301,7 +238,7 @@ Traction-battery and inverter work involves lethal voltage and stored energy. Pr
 - correctly rated fusing;
 - HV interlock strategy;
 - insulation/creepage/clearance;
-- guarded terminals and connectors;
+- guarded terminals/connectors;
 - de-energization verification;
 - fault shutdown;
 - battery/inverter/motor temperature limits;
@@ -311,17 +248,19 @@ Do not conduct high-power unloaded motor testing on an improvised fixture.
 
 ## e-AWD promotion gate
 
-Do not add additional `SIDE-EAWD-*` tasks beyond `SIDE-EAWD-001` until the user explicitly revives the project. The first meaningful gate after Q211 acquisition is:
+Do not add additional `SIDE-EAWD-*` tasks beyond `SIDE-EAWD-001` until the user explicitly revives the project.
 
-> Can the Q211 be integrated into the Celica rear geometry, using the Matrix assembly as a suspension/hard-point reference, while preserving acceptable fuel-tank/floor/exhaust packaging and axle geometry?
+The first meaningful gate after revival is:
 
-If no, keep the project parked or close it without escalating sunk cost.
+> Can the Y61 be integrated into the Celica rear geometry, using the Matrix assembly as a suspension/hard-point reference, while preserving acceptable fuel-tank/floor/exhaust packaging, axle geometry, and a credible <=~300-lb complete-system mass?
 
-If yes, only then does inverter bench work deserve active project status.
+If no, reconsider Q610 or keep the project parked without escalating sunk cost.
+
+If yes, the next gate is low-energy OEM-inverter CAN bench control, followed by C-Max BECM work.
 
 ## Cross-project boundaries
 
-- Baseline owns restoration of conventional hydraulic PS now.
+- Baseline owns conventional hydraulic PS now.
 - EPS is optional R&D and does not block Baseline.
 - BBK and EPS do not redefine Street Build completion unless deliberately adopted later.
 - P4 e-AWD is parked and does not redefine Street Build completion, rear-suspension architecture, fuel-system architecture, or current harness work unless explicitly adopted later.
@@ -331,16 +270,16 @@ Create explicit cross-project dependencies rather than duplicate tasks.
 
 ## Definition of done
 
-Before marking an active BBK or EPS task done, or future e-AWD task if that project is promoted:
+Before marking active BBK/EPS work done, or future e-AWD work if promoted:
 
-1. preserve the useful result in the relevant `PROJECT.md` or supporting engineering record;
+1. preserve the useful result in the relevant durable document;
 2. record exact parts/geometry/analysis assumptions where relevant;
 3. update decisions/current architecture;
 4. create only genuinely actionable follow-ons;
 5. reconcile blocked/ready tasks;
 6. preserve CAD/FEA/test/source references needed to reproduce the work.
 
-For parked-project research, update the durable Markdown checkpoint without creating attention/task debt unless the user explicitly wants the project active. `SIDE-EAWD-001` may remain open indefinitely as a passive sourcing reminder.
+For parked-project research, update durable Markdown without creating attention/task debt unless the user explicitly wants the project active. `SIDE-EAWD-001` may remain open indefinitely as a passive sourcing reminder.
 
 ## End-of-session reconciliation
 
