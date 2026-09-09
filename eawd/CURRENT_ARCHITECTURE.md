@@ -1,9 +1,10 @@
 # Celica P4 e-AWD — Current Architecture
 
-**Checkpoint:** 2026-09-08  
+**Checkpoint:** 2026-09-09  
 **Status:** parked / documented concept  
 **Current baseline:** Mitsubishi Y61 rear drive + matched OEM rear inverter + Ford C-Max Hybrid non-Energi battery  
 **Authoritative trade record:** [`TRADE_STUDY_2026-09-08.md`](TRADE_STUDY_2026-09-08.md)  
+**Exact donor watch list:** [`DONOR_WATCH.md`](DONOR_WATCH.md)  
 **Legacy architecture record:** [`PROJECT.md`](PROJECT.md) preserves the superseded Q211 / Gen-3 Prius-inverter / custom-regear concept and its useful battery-CAN research.
 
 ## Mission
@@ -52,12 +53,24 @@ Desired functions:
 
 | Component | Current baseline | Planning note |
 |---|---|---|
-| Rear drive | Mitsubishi Y61, later Outlander PHEV rear unit | ~70 kW / ~195 Nm / 7.065:1; ~133 lb community teardown benchmark including diff/brackets |
-| Inverter | Matched Mitsubishi OEM rear inverter | ~20 lb benchmark; retain OEM motor control and command torque over CAN |
-| Battery | Ford C-Max Hybrid, non-Energi | 281.2 V nominal, 1.4 kWh, 76 lb; DOE-tested high pulse power |
+| Rear drive | **2021–2022 Mitsubishi Outlander PHEV Y61 rear unit** | ~70 kW / ~195 Nm / 7.065:1; ~133 lb community teardown benchmark including diff/brackets |
+| Inverter | **Matched 2021–2022 Mitsubishi OEM rear inverter, target service part 9410A171** | ~20 lb benchmark; retain OEM motor control and command torque over CAN |
+| Battery | **2013–2018 Ford C-Max Hybrid, non-Energi** | 281.2 V nominal reference architecture, 1.4 kWh, 76 lb; DOE-tested high pulse power |
 | VCU | Dedicated Celica hybrid VCU | Translates EMU/chassis/BMS state into safe requested rear torque |
 | Rear differential | OEM open diff | Initial architecture does not require rear LSD or twin motors |
 | Disconnect | One-side inboard dog-clutch concept | Manual/stationary first; synchronized electrical actuation later |
+
+### Exact sourcing rule
+
+Primary rear-drive donor is **2021–2022 Mitsubishi Outlander PHEV**. Those are the selected 70 kW Y61 model years used by the current performance study.
+
+Secondary bargain donor only: **2018–2020 Mitsubishi Outlander PHEV**, which also uses a Y61 rear motor and ~195 Nm torque but is rated ~60 kW.
+
+Do **not** substitute **2023+ Mitsubishi Outlander PHEV** rear hardware without reopening the trade study; that generation uses the newer ~100 kW YA1 architecture.
+
+Battery/reference donor remains **2013–2018 Ford C-Max Hybrid, non-Energi only**. Prefer a mechanically failed but electrically healthy whole donor that still enters READY.
+
+See [`DONOR_WATCH.md`](DONOR_WATCH.md) for exact part references, cables, pigtails, CV hardware and junkyard checklist.
 
 ## Why Y61
 
@@ -78,7 +91,7 @@ See the trade study for full Q610/Q211 calculations and decision rationale.
 
 ## Battery philosophy
 
-The battery remains intentionally tiny. DOE/INL testing of the 2013 C-Max Hybrid reference pack documents 66.0 kW 10-second discharge capability and 47.8 kW 10-second charge capability at 50% DOD.
+The battery remains intentionally tiny. DOE/INL testing of nominally similar 2013 C-Max Hybrid packs showed meaningful test/unit variation, including approximately 56.2–66.0 kW 10-second discharge and 42.2–47.8 kW 10-second charge capability at 50% DOD.
 
 Therefore:
 
@@ -199,11 +212,6 @@ If Y61 fails mainly on package or mass, Q610 is the first alternative to revisit
 
 Do not buy a complete system merely because this architecture now looks promising.
 
-The only passive sourcing interest should be unusually good donor opportunities for:
-
-- 2021–2022-era Outlander PHEV Y61 rear drive unit;
-- matched OEM rear traction inverter;
-- factory Y61/inverter HV cables, pigtails, brackets and useful inner-CV hardware;
-- mechanically failed but electrically healthy C-Max Hybrid non-Energi reference car/pack.
+The only passive sourcing interest should be unusually good donor opportunities listed in [`DONOR_WATCH.md`](DONOR_WATCH.md).
 
 When the project is explicitly revived, the first real engineering gate is **Y61 packaging + mass characterization against the Matrix/Celica rear geometry**, followed by low-risk OEM-inverter CAN bench control.
